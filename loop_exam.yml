@@ -1,0 +1,16 @@
+---
+- name: uninstall packages
+  hosts: all
+  become: true
+  gather_facts: yes
+  
+  tasks:
+  - name: uninstall packages
+    yum: 
+      name: "{{ item.package }}"
+      state: "{{ item.setup }}"
+    loop:
+      - { package: 'git', setup: 'installed'}
+      - { package: 'wget', setup: 'removed'}
+      - { package: 'tree', setup: 'latest'}
+      - { package: 'make', setup: 'absent'}

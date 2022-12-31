@@ -1,0 +1,9 @@
+---
+- name: creating user
+  hosts: all
+  become: true
+  gather_facts: no
+  tasks:
+  - name: creating user modi
+    user: 
+      name: modi

@@ -1,0 +1,11 @@
+---
+- name: uninstall httpd
+  become: true
+  gather_facts: yes
+  hosts: [RedHatservers]
+
+  tasks:
+  - name: uninstaller
+    yum:
+      name: httpd
+      state: absent

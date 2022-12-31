@@ -1,0 +1,11 @@
+---
+- name: delete file
+  hosts: all
+  gather_facts: no 
+  become: yes
+  
+  tasks:
+  - name: delete index
+    file:
+      path: /var/www/html
+      state: absent

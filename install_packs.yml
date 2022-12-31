@@ -1,0 +1,15 @@
+---
+- name: package installer
+  hosts: all
+  gather_facts: no 
+  become: true
+ 
+  tasks:
+  - name: installing tree
+    yum:
+      name: tree
+      state: installed
+
+  - name: creating sonia
+    user:
+      name: sonia

@@ -1,0 +1,27 @@
+---
+- name: installing on rhel and ubuntu
+  hosts: all
+  gather_facts: yes
+  become: true
+
+  tasks:
+  - name: install httpd on rhel
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_distribution == "RedHat"
+    notify: starting httpd   
+  
+  - name: copy file
+    copy: 
+      src: /home/ansadmin/playbooks/index.html
+      dest: /var/www/html
+
+  handlers:
+  - name: starting httpd
+    service:
+      name: httpd
+      state: started
+    when: ansible_distribution == "RedHat"
+    
+  

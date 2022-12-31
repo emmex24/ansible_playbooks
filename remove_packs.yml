@@ -1,0 +1,12 @@
+---
+- name: uninstall packages
+  hosts: all
+  gather_facts: yes
+  become: true
+ 
+  tasks:
+  - name: uninstall package
+    yum:
+      name: ['git', 'tree']
+      state: absent
+      
